@@ -1,59 +1,27 @@
+# Mementum: AI-Powered Trading & Content Creation on Solana
 
-# **Mementum: AI-Powered Trading & Content Creation on Blockchain**
+## Overview
 
-## **Overview**
-
-Mementum is an AI-driven platform that combines trading automation, content generation, decentralized governance, and NFT minting using blockchain technology. The ecosystem revolves around **$MEME**, an ERC-20 token, enabling AI-assisted trading, governance, staking, and multimedia content creation.
+Mementum is an AI-driven platform that combines trading automation, content generation, and decentralized governance using the Solana blockchain. The ecosystem revolves around **$MEME**, an ERC-20 (or equivalent) token, enabling AI-assisted trading, NFT minting, and governance mechanisms.
 
 Mementum's SDK provides seamless integration with AI services and blockchain functionalities, allowing developers to:
 
 - Generate AI-powered multimedia content (text, images, videos).
-- Interact with smart contracts for trading, staking, governance, and NFT minting.
+- Interact with smart contracts (trading, staking, governance).
 - Utilize a secure and modular framework for decentralized AI applications.
 
----
+## Features
 
-## **Features**
-
-- **$MEME Token**: A secure ERC-20 token with minting, burning, and transfer functionalities.
+- **$MEME Token**: A secure ERC-20 (or equivalent) token with minting, burning, and transfer functionalities.
 - **AI Content Generation**: Multi-modal AI for text, images, and video generation.
 - **Governance Mechanism**: DAO-powered voting for protocol upgrades and decisions.
-- **NFT Minting**: Create and manage NFTs representing digital content (e.g., memes, art).
-- **Content Ownership**: Register and verify ownership of digital content tied to NFTs.
-- **Staking Rewards**: Earn rewards by staking $MEME tokens in the staking contract.
 - **SDK for Developers**: Easy-to-use Python SDK to interact with Mementum's AI and blockchain features.
+- **Scripts for Deployment and Management**: Pre-built scripts for deploying contracts, minting tokens, creating governance proposals, and executing airdrops.
+- **Examples for Quick Integration**: Ready-to-run example scripts demonstrating basic and advanced usage of the SDK.
+- **Smart Contracts**: Secure and modular smart contracts for token management, governance, and additional features like NFT minting and staking.
 - **Security First**: Utilizes OpenZeppelin libraries, rigorous validation, and best practices.
 
----
-
-## **Smart Contracts**
-
-The following smart contracts are part of the Mementum ecosystem:
-
-1. **`MementumToken.sol`**
-
-   - Implements the ERC-20 `$MEME` token with secure minting, burning, and transfer functionalities.
-   - Located in `contracts/MementumToken.sol`.
-2. **`MemeGovernance.sol`**
-
-   - Enables decentralized governance through voting mechanisms powered by $MEME tokens.
-   - Located in `contracts/MemeGovernance.sol`.
-3. **`MemeNFT.sol`**
-
-   - Implements ERC-721 NFTs for minting and managing digital content.
-   - Located in `contracts/MemeNFT.sol`.
-4. **`ContentOwnership.sol`**
-
-   - Allows creators to register ownership of their content (e.g., memes) tied to NFTs.
-   - Located in `contracts/ContentOwnership.sol`.
-5. **`MemeStakingRewards.sol`**
-
-   - Provides staking functionality where users can stake $MEME tokens to earn rewards.
-   - Located in `contracts/MemeStakingRewards.sol`.
-
----
-
-## **Installation**
+## Installation
 
 To get started with Mementum, install the SDK:
 
@@ -69,139 +37,193 @@ cd mementum-sdk
 pip install -r requirements.txt
 ```
 
-### **Prerequisites**
+### Prerequisites
 
 - Python 3.8 or higher.
 - Install dependencies using `pip install -r requirements.txt`.
 - Set up environment variables in a `.env` file (see [Configuration](#configuration)).
 
----
+## Smart Contracts
 
-## **Quick Start**
+The smart contracts are the backbone of the Mementum ecosystem, providing secure and modular functionality for token management, governance, and additional features like NFT minting and staking.
 
-### **Example: AI Content Generation**
+### Available Contracts
 
-Generate AI-powered content such as text, images, or videos.
+- **`MementumToken.sol`**: The ERC-20 token contract for `$MEME`, with secure implementations of minting, burning, and transfer functionalities.
+- **`MemeGovernance.sol`**: The governance contract for voting, DAO features, or on-chain decision-making.
+- **`MemeNFT.sol`**: An ERC-721 contract for minting NFTs, which can represent memes or other digital content.
+- **`ContentOwnership.sol`**: A contract for registering and verifying ownership of content tied to NFTs.
+- **`MemeStakingRewards.sol`**: A staking rewards contract that allows users to stake `$MEME` tokens and earn rewards.
 
-```python
-from sdk import MementumAI
+#### Key Features
 
-# Initialize AI module
-ai = MementumAI()
+- **Secure Implementation**: Leverages OpenZeppelin libraries for secure and audited implementations.
+- **Modular Design**: Each contract is designed to be modular, allowing for easy upgrades and extensions.
+- **Best Practices**: Implements thorough checks (e.g., `require` statements, modifiers) to prevent common exploits like reentrancy and overflow/underflow.
 
-# Generate text
-text_content = ai.generate_text("Create a market analysis report.")
-print(f"Generated Text: {text_content}")
+#### Deployment
 
-# Generate an image
-image_url = ai.generate_image("A futuristic cityscape at sunset.")
-print(f"Generated Image URL: {image_url}")
+To deploy the smart contracts, use the provided deployment script:
+
+```bash
+node scripts/deploy_contracts.js --network <network_name>
 ```
 
----
+Replace `<network_name>` with `testnet` or `mainnet`.
 
-### **Example: Blockchain Interactions**
+#### Interacting with Contracts
 
-Interact with the blockchain to transfer tokens, query balances, or stake tokens.
+Once deployed, you can interact with the contracts using the SDK or directly via Web3 tools like MetaMask or Hardhat.
+
+Example: Querying the balance of a wallet:
 
 ```python
 from sdk import BlockchainInteractions
 
-# Initialize blockchain module
 blockchain = BlockchainInteractions()
-
-# Get token balance
 balance = blockchain.get_balance("your_wallet_address")
 print(f"Token Balance: {balance} $MEME")
-
-# Transfer tokens
-tx_hash = blockchain.transfer_tokens(
-    sender_private_key="your_private_key",
-    recipient="recipient_wallet_address",
-    amount=100
-)
-print(f"Transaction Hash: {tx_hash}")
-
-# Stake tokens
-staking_contract = blockchain.get_staking_contract()
-staking_contract.stake("your_private_key", 50)
-print("Tokens staked successfully!")
 ```
 
----
+## Examples for Quick Integration
 
-### **Example: NFT Minting**
+The `examples/` directory contains ready-to-run scripts to help developers quickly understand how to integrate and use the Mementum SDK.
 
-Mint NFTs representing digital content.
+### Available Examples
 
-```python
-from sdk import BlockchainInteractions
+- **`basic_integration.py`**: Demonstrates a minimal workflow for initializing the SDK, generating AI content, and handling token transactions.
+- **`local_sdk_usage.py`**: Shows how to use AI modules locally (offline inference) and interact with test networks.
 
-# Initialize blockchain module
-blockchain = BlockchainInteractions()
+#### Running Examples
 
-# Mint an NFT
-nft_contract = blockchain.get_nft_contract()
-tx_hash = nft_contract.mint_nft("your_wallet_address")
-print(f"NFT Minted! Transaction Hash: {tx_hash}")
-```
+Each example script is self-contained and includes detailed comments for clarity. To run an example, navigate to the `examples/` directory and execute the script:
 
----
+1. **Basic Integration**
 
-### **Example: Governance Voting**
+   ```bash
+   python examples/basic_integration.py
+   ```
 
-Participate in governance by voting on proposals.
+   This script demonstrates:
 
-```python
-from sdk import BlockchainInteractions
+   - Generating AI-powered text and images.
+   - Querying token balances.
+   - Transferring tokens on the blockchain.
+2. **Local SDK Usage**
 
-# Initialize blockchain module
-blockchain = BlockchainInteractions()
+   ```bash
+   python examples/local_sdk_usage.py
+   ```
 
-# Vote on a proposal
-governance_contract = blockchain.get_governance_contract()
-proposal_id = 1
-vote_support = True  # True for "Yes", False for "No"
-tx_hash = governance_contract.vote("your_private_key", proposal_id, vote_support)
-print(f"Vote submitted! Transaction Hash: {tx_hash}")
-```
+   This script demonstrates:
 
----
+   - Generating AI content locally without requiring an internet connection.
+   - Interacting with a testnet to query balances and simulate token transfers.
 
-## **SDK Structure**
+#### Key Notes
+
+- Ensure all required environment variables (e.g., `AI_API_KEY`, `BLOCKCHAIN_PROVIDER_URL`) are set in your `.env` file.
+- Use these examples as templates for building your own integrations.
+
+## Scripts for Deployment and Management
+
+The `scripts/` directory contains pre-built scripts to simplify common tasks like deploying contracts, minting tokens, creating governance proposals, and executing airdrops.
+
+### Available Scripts
+
+- **`deploy_contracts.js`**: Deploys or upgrades Mementum smart contracts to testnet or mainnet.
+- **`mint_tokens.js`**: Mints `$MEME` tokens or distributes them for community events.
+- **`create_proposal.js`**: Creates governance proposals for voting.
+- **`airdrop_tokens.js`**: Executes token airdrops to multiple recipients.
+
+#### Usage Instructions
+
+Each script includes detailed usage instructions in its header. Below are examples of how to run these scripts:
+
+1. **Deploy Contracts**
+
+   ```bash
+   node scripts/deploy_contracts.js --network <network_name>
+   ```
+
+   Replace `<network_name>` with `testnet` or `mainnet`.
+2. **Mint Tokens**
+
+   ```bash
+   node scripts/mint_tokens.js --network <network_name> <recipient_address> <amount>
+   ```
+
+   Example:
+
+   ```bash
+   node scripts/mint_tokens.js --network testnet 0xRecipientAddress 1000
+   ```
+3. **Create Governance Proposal**
+
+   ```bash
+   node scripts/create_proposal.js --network <network_name> "Proposal Description" <duration_in_seconds>
+   ```
+
+   Example:
+
+   ```bash
+   node scripts/create_proposal.js --network testnet "Increase staking rewards" 86400
+   ```
+4. **Execute Airdrop**
+
+   ```bash
+   node scripts/airdrop_tokens.js --network <network_name> "0xAddr1,0xAddr2" "100,200"
+   ```
+
+   Example:
+
+   ```bash
+   node scripts/airdrop_tokens.js --network testnet "0xAddr1,0xAddr2" "100,200"
+   ```
+
+#### Key Notes
+
+- Ensure all required environment variables (e.g., `CONTRACT_ADDRESS`, `PRIVATE_KEY`) are set in your `.env` file.
+- Use strong logging and error handling to avoid misdeployments or failures.
+
+## SDK Structure
 
 The SDK is organized into modular components for ease of use and maintainability:
 
 - **`__init__.py`**: Marks the directory as a Python package and exposes key classes/functions.
 - **`mementum_ai.py`**: Houses AI logic for generating multi-modal content (text, images, videos).
 - **`mementum_api.py`**: Manages REST or GraphQL endpoints for interacting with the platform's backend.
-- **`blockchain_interactions.py`**: Provides utility functions for blockchain interactions (e.g., transferring tokens, querying balances, minting NFTs, staking).
+- **`blockchain_interactions.py`**: Provides utility functions for blockchain interactions (e.g., transferring tokens, querying balances).
 - **`config.py`**: Centralizes configuration loading (e.g., API keys, contract addresses).
 - **`errors.py`**: Defines custom exceptions for better error handling.
 - **`logging_config.py`**: Standardizes logging setup for consistent outputs.
 - **`utils.py`**: Contains reusable helper functions (e.g., data validation, text formatting).
 
----
-
-## **Configuration**
+## Configuration
 
 The SDK uses environment variables for configuration. Create a `.env` file in the root directory with the following variables:
 
 ```env
+# AI Service Configuration
 AI_API_KEY=your_ai_service_api_key
-PLATFORM_API_KEY=your_platform_api_key
-BLOCKCHAIN_PROVIDER_URL=https://rpc-url
-CONTRACT_ADDRESS_MEME_TOKEN=your_meme_token_contract_address
-CONTRACT_ADDRESS_GOVERNANCE=your_governance_contract_address
-CONTRACT_ADDRESS_NFT=your_nft_contract_address
-CONTRACT_ADDRESS_STAKING=your_staking_contract_address
+
+# Blockchain Configuration
+BLOCKCHAIN_PROVIDER_URL=https://solana-rpc-url
+CONTRACT_ADDRESS=your_contract_address
+WALLET_ADDRESS=your_wallet_address
+PRIVATE_KEY=your_private_key
+RECIPIENT_ADDRESS=recipient_wallet_address
+
+# Testnet Configuration
+TESTNET_PROVIDER_URL=https://testnet-rpc-url
+TESTNET_CONTRACT_ADDRESS=testnet_contract_address
+TEST_WALLET_ADDRESS=test_wallet_address
+TEST_PRIVATE_KEY=test_private_key
+TEST_RECIPIENT_ADDRESS=test_recipient_address
+CONTRACT_ABI=[...]  # JSON array of ABI
 ```
 
-These variables are automatically loaded by the `Config` class in `config.py`.
-
----
-
-## **Error Handling**
+## Error Handling
 
 The SDK includes custom exception classes for better error reporting:
 
@@ -219,9 +241,7 @@ except BlockchainError as e:
     print(f"Blockchain Error: {e}")
 ```
 
----
-
-## **Logging**
+## Logging
 
 The SDK standardizes logging for debugging and monitoring. Logs are formatted as:
 
@@ -238,8 +258,6 @@ logger.info("This is an informational message.")
 logger.error("This is an error message.")
 ```
 
----
-
-## **License**
+## License
 
 Mementum is licensed under the MIT License.
