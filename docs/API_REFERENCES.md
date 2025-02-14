@@ -1,9 +1,7 @@
-This file serves as a reference for all public classes, functions, and endpoints in the SDK.
-
-```markdown
 # Mementum API Reference
 
 ## Table of Contents
+
 1. [MementumAI](#mementumai)
 2. [MementumAPI](#mementumapi)
 3. [BlockchainInteractions](#blockchaininteractions)
@@ -11,8 +9,6 @@ This file serves as a reference for all public classes, functions, and endpoints
 5. [Errors](#errors)
 6. [Logging](#logging)
 7. [Utils](#utils)
-```
-
 
 #### Description
 
