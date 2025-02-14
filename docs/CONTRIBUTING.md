@@ -68,15 +68,3 @@ We adhere to the [Contributor Covenant Code of Conduct](https://www.contributor-
 ## Questions?
 
 If you have questions or need help, open an issue or reach out to the maintainers.
-
-```
-
----
-
-### **Key Notes**
-1. **Comprehensive Coverage**: Each file covers its respective topic in detail, ensuring clarity for developers and contributors.
-2. **Consistency**: The documentation follows a consistent structure and tone across all files.
-3. **Actionable Guidelines**: The `CONTRIBUTING.md` file provides clear steps for contributing, making it easier for new contributors to get started.
-
-Let me know if you need further refinements!
-```
